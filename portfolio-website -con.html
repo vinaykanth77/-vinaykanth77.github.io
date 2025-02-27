@@ -1,0 +1,158 @@
+<div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>vinaykanth2003@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+91 99632 75321</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>H. No: 11-21 Medchal - 501401, Hyderabad, Telangana</p>
+                        </div>
+                    </div>
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/vinaykanth77" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-kaggle"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 Vinay Kanth Yellaboina. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth < 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', { name, email, subject, message });
+            
+            // Show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset the form
+            contactForm.reset();
+        });
+        
+        // Add animations on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.project-card, .education-item, .timeline-content');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animations
+        document.querySelectorAll('.project-card, .education-item, .timeline-content').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        // Run once on load
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
